@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>hu.virgo.courses</groupId>
+	<artifactId>courses-parent</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Virgo Courses</name>
+	<description>Helpful training materials for Virgo's Courses.</description>
+	<inceptionYear>2018</inceptionYear>
+	<url>https://github.com/virgo/courses</url>
+
+	<scm>
+		<connection>scm:git:git@github.com:virgo/courses.git</connection>
+		<developerConnection>scm:git:https://github.com/virgo/courses.git</developerConnection>
+		<url>${project.url}</url>
+		<tag>HEAD</tag>
+	</scm>
+
+
+	<issueManagement>
+		<system>Github Issues</system>
+		<url>https://github.com/virgo/courses/issues</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>GNU General Public License, version 3</name>
+			<url>http://opensource.org/licenses/GPL-3.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>zforgo</id>
+			<name>Zoltan Forgo</name>
+			<email>forgo.zoltan@virgo.hu</email>
+			<timezone>Europe/Budapest</timezone>
+			<roles>
+				<role>lead</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<project.scm.id>github</project.scm.id>
+		<github.global.server>${project.scm.id}</github.global.server>
+
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+	<modules>
+		<module>hibernate-course</module>
+	</modules>
+</project>
