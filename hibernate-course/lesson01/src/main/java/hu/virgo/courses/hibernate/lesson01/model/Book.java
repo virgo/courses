@@ -12,20 +12,24 @@ public class Book implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "ID", updatable = false, nullable = false)
-	private long id;
+	private Long id;
 
 	@Column(name = "TITLE", nullable = false)
 	private String title;
 
-	@Column(name="PUBLISHED_DATE")
+	@Column(name = "PUBLISHED_DATE")
 	@Temporal(TemporalType.DATE)
 	private Date publishedDate;
 
-	public long getId() {
+	@Column(name = "GENRE")
+	@Enumerated(EnumType.STRING)
+	private Genre genre;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -43,5 +47,13 @@ public class Book implements Serializable {
 
 	public void setPublishedDate(Date publishedDate) {
 		this.publishedDate = publishedDate;
+	}
+
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
 	}
 }
