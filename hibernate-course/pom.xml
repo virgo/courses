@@ -15,6 +15,7 @@
 	</properties>
 	<modules>
 		<module>lesson01</module>
+		<module>lesson02</module>
 	</modules>
 
 	<dependencyManagement>

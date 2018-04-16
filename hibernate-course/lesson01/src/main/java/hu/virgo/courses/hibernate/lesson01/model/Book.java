@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/*
+Az @Entity annotáció jelzi, hogy ez az osztály egy JPA entitás.
+Ezzel párhuzamosan a META-INF/persistence.xml-be is hasznos felvenni egy <class>...</class> bejegyzésként*/
 @Entity
 @Table(name = "BOOKS")
 public class Book implements Serializable {
