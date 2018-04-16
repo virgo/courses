@@ -19,5 +19,21 @@
 			<property name="javax.persistence.jdbc.password" value="test" />
 		</properties>
 	</persistence-unit>
+	<persistence-unit name="course_test2" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>hu.virgo.courses.hibernate.lesson02.model.Person</class>
+		<class>hu.virgo.courses.hibernate.lesson02.model.Company</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<shared-cache-mode>ALL</shared-cache-mode>
+		<properties>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url"
+					  value="jdbc:h2:mem:serviceEnablerDB;DB_CLOSE_DELAY=-1" />
+			<property name="javax.persistence.jdbc.user" value="test" />
+			<property name="javax.persistence.jdbc.password" value="test" />
+		</properties>
+	</persistence-unit>
 </persistence>
 

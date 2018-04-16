@@ -7,7 +7,7 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<jta-data-source>jboss/datasources/ExampleDS</jta-data-source>
 		<non-jta-data-source>jboss/datasources/ExampleDS</non-jta-data-source>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

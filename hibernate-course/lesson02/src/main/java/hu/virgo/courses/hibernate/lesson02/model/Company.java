@@ -1,6 +1,7 @@
 package hu.virgo.courses.hibernate.lesson02.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,6 +42,9 @@ public class Company implements Serializable {
 	@Size(max = 20)
 	@Column(name = "TAX_NUMBER", length = 20)
 	private String taxNumber;
+
+	@Embedded
+	private Address registeredAddress;
 
 	public Company() {
 	}
