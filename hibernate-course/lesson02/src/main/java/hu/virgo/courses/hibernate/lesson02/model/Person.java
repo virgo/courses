@@ -10,7 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "PEOPLE")
@@ -28,6 +33,13 @@ public class Person implements Serializable {
 
 	@Column(name = "PHONE_NO", length = 50)
 	private String phoneNumber;
+
+	@Column(name = "DATE_BIRTH")
+	@Temporal(TemporalType.DATE)
+	private LocalDate birthDate = LocalDate.of(1977, 12, 31);
+
+	@Transient
+	private Duration age = Duration.between(birthDate, LocalDate.now()).abs();
 
 	@Embedded
 	private Address mainAddress;
@@ -70,6 +82,22 @@ public class Person implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public Duration getAge() {
+		return age;
+	}
+
+	public void setAge(Duration age) {
+		this.age = age;
 	}
 
 	public Address getMainAddress() {
