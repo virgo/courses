@@ -2,12 +2,17 @@ package hu.virgo.courses.hibernate.lesson02.model;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyJoinColumn;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,6 +21,7 @@ import javax.persistence.Transient;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "PEOPLE")
@@ -35,11 +41,7 @@ public class Person implements Serializable {
 	private String phoneNumber;
 
 	@Column(name = "DATE_BIRTH")
-	@Temporal(TemporalType.DATE)
 	private LocalDate birthDate = LocalDate.of(1977, 12, 31);
-
-	@Transient
-	private Duration age = Duration.between(birthDate, LocalDate.now()).abs();
 
 	@Embedded
 	private Address mainAddress;
@@ -59,6 +61,12 @@ public class Person implements Serializable {
 			@AttributeOverride(name = "parcelNumber", column = @Column(name = "POSTAL_PARCEL_NUMBER", length = 20))
 	})
 	private Address postalAddress;
+
+	@ElementCollection
+	@CollectionTable(name = "PEOPLE_TASKS",
+			joinColumns = {@JoinColumn(name = "PERSON_ID")})
+	@OrderBy("dueDate DESC, title ASC")
+	private List<Task> tasks;
 
 	public Long getId() {
 		return id;
@@ -92,14 +100,6 @@ public class Person implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public Duration getAge() {
-		return age;
-	}
-
-	public void setAge(Duration age) {
-		this.age = age;
-	}
-
 	public Address getMainAddress() {
 		return mainAddress;
 	}
@@ -114,5 +114,13 @@ public class Person implements Serializable {
 
 	public void setPostalAddress(Address postalAddress) {
 		this.postalAddress = postalAddress;
+	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
 	}
 }
