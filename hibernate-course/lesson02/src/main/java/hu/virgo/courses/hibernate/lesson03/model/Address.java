@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hu.virgo.courses.hibernate.lesson02.model;
+package hu.virgo.courses.hibernate.lesson03.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

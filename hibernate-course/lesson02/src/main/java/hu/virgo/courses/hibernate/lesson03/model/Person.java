@@ -1,4 +1,4 @@
-package hu.virgo.courses.hibernate.lesson02.model;
+package hu.virgo.courses.hibernate.lesson03.model;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -11,15 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import java.io.Serializable;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 

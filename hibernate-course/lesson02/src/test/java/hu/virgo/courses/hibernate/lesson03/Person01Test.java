@@ -1,9 +1,9 @@
-package hu.virgo.courses.hibernate.lesson02;
+package hu.virgo.courses.hibernate.lesson03;
 
 import eu.drus.jpa.unit.api.JpaUnit;
-import hu.virgo.courses.hibernate.lesson02.model.Address;
-import hu.virgo.courses.hibernate.lesson02.model.Person;
-import hu.virgo.courses.hibernate.lesson02.model.Task;
+import hu.virgo.courses.hibernate.lesson03.model.Address;
+import hu.virgo.courses.hibernate.lesson03.model.Person;
+import hu.virgo.courses.hibernate.lesson03.model.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

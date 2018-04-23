@@ -7,6 +7,7 @@ import hu.virgo.courses.hibernate.lesson03.model.PhoneType;
 import hu.virgo.courses.hibernate.lesson03.model.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -15,6 +16,7 @@ import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -57,10 +59,14 @@ public class Person01Test {
 	private static Supplier<List<Phone>> preparePhones = () -> Stream.of(PhoneType.values()[new Random().nextInt(PhoneType.values().length)])
 			.map(Phone::new)
 			.collect(Collectors.toList());
+	private boolean hasRan;
+	private static final Phone otherPhone = new Phone(PhoneType.OTHER);
 
 	@BeforeEach
 	public void init() {
-
+		if (hasRan) {
+			return;
+		}
 		{
 			Person p = new Person();
 			p.setName("Ference Hill");
@@ -75,16 +81,23 @@ public class Person01Test {
 			preparePhones.get().forEach(p::addPhone);
 			em.persist(p);
 		}
+		{
+			Person p = new Person();
+			p.setName("James Bond");
+			p.setTasks(getTasks.get().stream().filter(t -> t.getDueDate().isAfter(LocalDateTime.now())).collect(Collectors.toList()));
+//			preparePhones.get().forEach(p::addPhone);
+			p.addPhone(otherPhone);
+			em.persist(p);
+		}
 		em.flush();
+		hasRan = true;
 	}
 
 	@Test
-	public void dummy() {
+	public void firstQueryTest() {
 		List<Person> people = em.createQuery("<<<< HERE WE GO >>>>>", Person.class)
 				.getResultList();
 
 		Assertions.assertEquals(1, people.size());
-
-
 	}
 }
