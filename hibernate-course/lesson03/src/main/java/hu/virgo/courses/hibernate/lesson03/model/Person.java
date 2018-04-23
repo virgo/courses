@@ -11,10 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.MapKeyEnumerated;
+import javax.persistence.MapKeyTemporal;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,11 +49,13 @@ public class Person implements Serializable {
 			joinColumns = {@JoinColumn(name = "PERSON_ID")})
 	private List<Task> tasks;
 
+
 	@ElementCollection
 	@CollectionTable(name = "PEOPLE_PHONES", joinColumns = @JoinColumn(name = "PERSON_ID"))
 	@MapKeyColumn(name = "PHONE_TYPE")
 	@MapKeyEnumerated(EnumType.STRING)
 	private Map<PhoneType, Phone> phones = new HashMap<>();
+
 
 	public Long getId() {
 		return id;

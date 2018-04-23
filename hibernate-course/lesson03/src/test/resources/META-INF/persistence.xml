@@ -7,7 +7,7 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>hu.virgo.courses.hibernate.lesson03.model.Person</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<shared-cache-mode>ALL</shared-cache-mode>
+		<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 			<property name="hibernate.show_sql" value="true"/>
