@@ -101,4 +101,11 @@ public class Person implements Serializable {
 	public void addPhone(Phone phone) {
 		getPhones().put(phone.getType(), phone);
 	}
+
+	@Override
+	public String toString() {
+		return "Person{" +
+				"name='" + name + '\'' +
+				'}';
+	}
 }
