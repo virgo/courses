@@ -11,15 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.MapKeyEnumerated;
-import javax.persistence.MapKeyTemporal;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +24,10 @@ import java.util.Map;
 @Entity
 @Table(name = "PEOPLE")
 @SequenceGenerator(name = "person_seq", sequenceName = "person_sequence", initialValue = 10)
+@NamedQueries({
+		@NamedQuery(name = "findAll", query = "select p from Person p"),
+		@NamedQuery(name = "rudeBoys", query = "select distinct p from Person p JOIN p.tasks pt where pt.dueDate < :due")
+})
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 

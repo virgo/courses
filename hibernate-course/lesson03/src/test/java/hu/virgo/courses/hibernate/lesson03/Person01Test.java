@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -77,6 +78,7 @@ public class Person01Test {
 			p.setName("Dub Spancer");
 			p.setTasks(getTasks.get().stream().filter(t -> t.getDueDate().isAfter(LocalDateTime.now())).collect(Collectors.toList()));
 			preparePhones.get().forEach(p::addPhone);
+			p.addPhone(otherPhone);
 			em.persist(p);
 		}
 		{
@@ -127,5 +129,59 @@ select distinct person0_.ID as ID1_0_, p.* from PEOPLE person0_ inner join PEOPL
 				.getResultList();
 
 		Assertions.assertEquals(1, people.size());
+	}
+
+	@Test
+	public void countTest() {
+		long peopleCount = em.createQuery("select count(distinct p) from Person p JOIN p.tasks pt where pt.dueDate < :due", Long.class)
+				.setParameter("due", LocalDateTime.now())
+				.getSingleResult();
+
+		Assertions.assertEquals(3L, peopleCount);
+	}
+
+	@Test
+	public void keyTest() {
+/*
+Hibernate: create table PEOPLE
+	(ID bigint not null,
+	DATE_BIRTH binary(255),
+	NAME varchar(255) not null,
+	PHONE_NO varchar(50), primary key (ID))
+Hibernate: create table PEOPLE_PHONES (
+	PERSON_ID bigint not null,
+	areaCode varchar(255),
+	number varchar(255),
+	type integer,
+	PHONE_TYPE varchar(255) not null,
+	primary key (PERSON_ID, PHONE_TYPE))
+
+SELECT p.* from PEOPLE p INNER JOIN PEOPLE_PHONES ph
+	ON p.ID = ph.PERSON_ID
+	WHERE ph.PHONE_TYPE = 'OTHER'
+ */
+
+		List<Person> people = em.createQuery("select distinct person from Person person " +
+				"where key(person.phones) = 'OTHER'", Person.class)
+				.getResultList();
+		System.out.println("valami");
+	}
+
+	@Test
+	public void keyINTest() {
+		List<Person> people = em.createQuery("select distinct person from Person person " +
+				"where key(person.phones) IN :phoneTypes", Person.class)
+				.setParameter("phoneTypes", Arrays.asList(PhoneType.WORK, PhoneType.MOBILE))
+				.getResultList();
+		System.out.println("valami");
+	}
+
+	@Test
+	public void namedQTest() {
+		List<Person> people = em.createNamedQuery("rudeBoys", Person.class)
+				.setParameter("due", LocalDateTime.now())
+				.setFirstResult(3)
+				.setMaxResults(10)
+				.getResultList();
 	}
 }
