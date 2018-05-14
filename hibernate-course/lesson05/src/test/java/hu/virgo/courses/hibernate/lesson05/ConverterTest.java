@@ -21,6 +21,7 @@ public class ConverterTest {
 	public void simplePersistTest() {
 		Shirt s = new Shirt();
 		s.setBrand("Fruit of the Loom");
+		s.setNetPrice(1000.0F);
 		em.persist(s);
 		Assertions.assertNotNull(s.getId());
 		Assertions.assertEquals(BRAND, s.getBrand());
