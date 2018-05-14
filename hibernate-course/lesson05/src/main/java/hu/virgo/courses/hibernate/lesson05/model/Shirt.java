@@ -41,4 +41,11 @@ public class Shirt implements Serializable {
 		this.brand = brand;
 	}
 
+	public float getNetPrice() {
+		return netPrice;
+	}
+
+	public void setNetPrice(float netPrice) {
+		this.netPrice = netPrice;
+	}
 }
