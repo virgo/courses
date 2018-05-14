@@ -26,8 +26,8 @@ public class Shirt implements Serializable {
 	@Column(name = "NET_PRICE", nullable = false, precision = 3)
 	private float netPrice;
 
-	@Convert(converter = ColorConverter.class)
-	private Color color;
+	@Column(name = "COLOR")
+	private ColorAuto color;
 
 	@ElementCollection
 	@Convert(converter = ColorConverter.class)
@@ -57,11 +57,11 @@ public class Shirt implements Serializable {
 		this.netPrice = netPrice;
 	}
 
-	public Color getColor() {
+	public ColorAuto getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
+	public void setColor(ColorAuto color) {
 		this.color = color;
 	}
 
