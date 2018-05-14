@@ -4,16 +4,20 @@ import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PostPersist;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "SHIRTS")
-public class Shirt implements Serializable {
+@EntityListeners({BrandNameListener.class, BrandNameListener02.class})
+public class Shirt extends Audited implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,6 +36,18 @@ public class Shirt implements Serializable {
 	@ElementCollection
 	@Convert(converter = ColorConverter.class)
 	private List<Color> colors;
+
+	@PrePersist
+	public void fixBrand() {
+		if (null == brand) {
+			brand = "NO-NAME";
+		}
+	}
+
+	@PostPersist
+	public void postPersist() {
+		System.out.println("Persisted");
+	}
 
 	public Long getId() {
 		return id;
