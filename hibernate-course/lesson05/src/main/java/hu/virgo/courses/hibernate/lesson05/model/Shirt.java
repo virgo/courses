@@ -2,12 +2,14 @@ package hu.virgo.courses.hibernate.lesson05.model;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "SHIRTS")
@@ -26,6 +28,10 @@ public class Shirt implements Serializable {
 
 	@Convert(converter = ColorConverter.class)
 	private Color color;
+
+	@ElementCollection
+	@Convert(converter = ColorConverter.class)
+	private List<Color> colors;
 
 	public Long getId() {
 		return id;
@@ -57,5 +63,13 @@ public class Shirt implements Serializable {
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	public List<Color> getColors() {
+		return colors;
+	}
+
+	public void setColors(List<Color> colors) {
+		this.colors = colors;
 	}
 }

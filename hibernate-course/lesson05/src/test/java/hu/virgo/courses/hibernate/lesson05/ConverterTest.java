@@ -9,6 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.List;
 
 @ExtendWith(JpaUnit.class)
 public class ConverterTest {
@@ -38,5 +40,32 @@ public class ConverterTest {
 
 		Shirt s2 = em.find(Shirt.class, s.getId());
 		Assertions.assertEquals(c, s2.getColor());
+	}
+
+	@Test
+	public void colorsPersistTest() {
+		Shirt s = new Shirt();
+		s.setBrand("Fruit of the Loom");
+		s.setNetPrice(1000.0F);
+
+		List<Color> colors = new ArrayList<>();
+
+		Color c = new Color();
+		c.setRed(127);
+		c.setGreen(255);
+		c.setBlue(90);
+
+		Color c0 = new Color();
+		c0.setRed(0);
+		c0.setGreen(66);
+		c0.setBlue(123);
+		colors.add(c);
+		colors.add(c0);
+		s.setColors(colors);
+
+		em.persist(s);
+
+		Assertions.assertNotNull(s.getId());
+		Assertions.assertEquals(BRAND, s.getBrand());
 	}
 }
