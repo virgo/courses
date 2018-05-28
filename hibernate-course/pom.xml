@@ -19,6 +19,7 @@
 		<module>lesson03</module>
 		<module>lesson04</module>
 		<module>lesson05</module>
+		<module>lesson06</module>
 	</modules>
 
 	<dependencyManagement>
