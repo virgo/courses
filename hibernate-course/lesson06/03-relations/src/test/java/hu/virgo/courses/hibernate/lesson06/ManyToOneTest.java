@@ -73,7 +73,7 @@ public class ManyToOneTest {
 
 	@Test
 	public void departmentTest() {
-		List<Employee> emps = em.createQuery("select e from Person e where e.department = :department", Employee.class)
+		List<Employee> emps = em.createQuery("select e from Employee e where e.department = :department", Employee.class)
 				.setParameter("department", main)
 				.getResultList();
 

@@ -1,14 +1,19 @@
 package hu.virgo.courses.hibernate.lesson06.model;
 
-import javax.persistence.CascadeType;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
+@DynamicUpdate
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +24,15 @@ public class Employee implements Serializable {
 	private String name;
 	private long salary;
 
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne
+	@JoinTable(name = "EMPLOYEE_TO_DEPARTMENT",
+			joinColumns = {
+					@JoinColumn(name = "EMP_TO_DEP")
+			},
+			inverseJoinColumns = {
+					@JoinColumn(name = "DEP_TO_EMP")
+			})
+
 	private Department department;
 
 	public Long getId() {
