@@ -1,7 +1,6 @@
 package hu.virgo.courses.hibernate.lesson07;
 
 import eu.drus.jpa.unit.api.JpaUnit;
-import hu.virgo.courses.hibernate.lesson07.model.Department;
 import hu.virgo.courses.hibernate.lesson07.model.Department_;
 import hu.virgo.courses.hibernate.lesson07.model.Employee;
 import hu.virgo.courses.hibernate.lesson07.model.Employee_;
