@@ -10,8 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Employee implements Serializable {
@@ -23,6 +26,9 @@ public class Employee implements Serializable {
 
 	private String name;
 	private long salary;
+
+	@ManyToMany
+	private List<Project> projects;
 
 	@ManyToOne
 	private Department department;
@@ -57,5 +63,23 @@ public class Employee implements Serializable {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", salary=" + salary +
+				", department=" + department +
+				'}';
 	}
 }

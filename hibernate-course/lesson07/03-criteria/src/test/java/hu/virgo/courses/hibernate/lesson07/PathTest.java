@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @ExtendWith(JpaUnit.class)
-public class JoinAndPathTest {
+public class PathTest {
 
 	@PersistenceContext(unitName = "course_test")
 	private EntityManager em;

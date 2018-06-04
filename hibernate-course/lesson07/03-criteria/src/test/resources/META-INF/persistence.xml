@@ -11,6 +11,7 @@
 
 		<class>hu.virgo.courses.hibernate.lesson07.model.Employee</class>
 		<class>hu.virgo.courses.hibernate.lesson07.model.Department</class>
+		<class>hu.virgo.courses.hibernate.lesson07.model.Project</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>
