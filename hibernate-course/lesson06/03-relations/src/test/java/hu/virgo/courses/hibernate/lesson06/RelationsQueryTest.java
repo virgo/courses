@@ -23,7 +23,7 @@ public class RelationsQueryTest {
 	private Address rural = new Address();
 	private Address foreign = new Address();
 
-	@BeforeEach
+//	@BeforeEach
 	public void init() {
 		if (hasRan) {
 			return;

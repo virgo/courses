@@ -1,5 +1,8 @@
 package hu.virgo.courses.hibernate.lesson07.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,8 +20,12 @@ import java.util.Set;
 @Entity
 @Table(name = "ORDERS")
 @NamedEntityGraph(name = "graph.Order.items",
-		attributeNodes = @NamedAttributeNode(value = "items", subgraph = "items"),
-		subgraphs = @NamedSubgraph(name = "items", attributeNodes = @NamedAttributeNode("product")))
+		attributeNodes = {
+			@NamedAttributeNode(value = "items", subgraph = "items")
+		},
+		subgraphs = {
+				@NamedSubgraph(name = "items", attributeNodes = @NamedAttributeNode("product"))
+		})
 public class Order {
 	private static final long serialVersionUID = 1L;
 

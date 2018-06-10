@@ -17,8 +17,8 @@ public class Person {
 
 	private String name;
 
-//	@ManyToOne
-//	private Address address;
+	@ManyToOne
+	private Address address;
 
 	public Long getId() {
 		return id;
@@ -36,11 +36,11 @@ public class Person {
 		this.name = name;
 	}
 
-//	public Address getAddress() {
-//		return address;
-//	}
-//
-//	public void setAddress(Address address) {
-//		this.address = address;
-//	}
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 }

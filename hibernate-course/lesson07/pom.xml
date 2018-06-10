@@ -91,6 +91,5 @@
 	<modules>
 		<module>01-simplegraph</module>
 		<module>02-subgraphs</module>
-		<module>03-criteria</module>
 	</modules>
 </project>
