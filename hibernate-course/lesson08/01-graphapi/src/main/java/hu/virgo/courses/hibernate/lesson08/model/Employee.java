@@ -7,9 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedAttributeNode;
-import javax.persistence.NamedEntityGraph;
-import javax.persistence.NamedEntityGraphs;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.io.Serializable;
@@ -17,15 +14,6 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@NamedEntityGraphs({
-		@NamedEntityGraph(name = "Employee.withDepartment", attributeNodes = {
-				@NamedAttributeNode("department"),
-		}),
-		@NamedEntityGraph(name = "Employee.withProjects", attributeNodes = {
-				@NamedAttributeNode("projects"),
-		})
-
-})
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 

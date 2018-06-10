@@ -1,4 +1,4 @@
-package hu.virgo.courses.hibernate.lesson07;
+package hu.virgo.courses.hibernate.lesson08;
 
 import eu.drus.jpa.unit.api.JpaUnit;
 import hu.virgo.courses.hibernate.lesson07.model.Department_;

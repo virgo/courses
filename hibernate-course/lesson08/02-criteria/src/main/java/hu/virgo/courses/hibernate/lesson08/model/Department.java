@@ -1,14 +1,10 @@
-package hu.virgo.courses.hibernate.lesson07.model;
+package hu.virgo.courses.hibernate.lesson08.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 public class Department implements Serializable {

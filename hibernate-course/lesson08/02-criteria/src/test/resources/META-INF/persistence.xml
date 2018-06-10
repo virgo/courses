@@ -5,13 +5,13 @@
 			 version="2.1">
 	<persistence-unit name="course_test" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>hu.virgo.courses.hibernate.lesson07.model.Order</class>
-		<class>hu.virgo.courses.hibernate.lesson07.model.OrderItem</class>
-		<class>hu.virgo.courses.hibernate.lesson07.model.Product</class>
+		<class>hu.virgo.courses.hibernate.lesson08.model.Order</class>
+		<class>hu.virgo.courses.hibernate.lesson08.model.OrderItem</class>
+		<class>hu.virgo.courses.hibernate.lesson08.model.Product</class>
 
-		<class>hu.virgo.courses.hibernate.lesson07.model.Employee</class>
-		<class>hu.virgo.courses.hibernate.lesson07.model.Department</class>
-		<class>hu.virgo.courses.hibernate.lesson07.model.Project</class>
+		<class>hu.virgo.courses.hibernate.lesson08.model.Employee</class>
+		<class>hu.virgo.courses.hibernate.lesson08.model.Department</class>
+		<class>hu.virgo.courses.hibernate.lesson08.model.Project</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>

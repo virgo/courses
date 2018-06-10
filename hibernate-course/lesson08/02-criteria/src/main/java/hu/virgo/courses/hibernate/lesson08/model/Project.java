@@ -1,4 +1,4 @@
-package hu.virgo.courses.hibernate.lesson07.model;
+package hu.virgo.courses.hibernate.lesson08.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

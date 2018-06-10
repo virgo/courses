@@ -9,12 +9,4 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>02-criteria</artifactId>
-	<dependencies>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>5.2.11.Final</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
 </project>
