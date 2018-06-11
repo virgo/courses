@@ -8,5 +8,25 @@
 		<artifactId>lesson08</artifactId>
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>02-criteria</artifactId>
+	<artifactId>02-criteria</artifactId>	<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.7.0</version>
+			<configuration>
+				<annotationProcessors>
+					<annotationProcessor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</annotationProcessor>
+				</annotationProcessors>
+			</configuration>
+			<dependencies>
+				<dependency>
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate-jpamodelgen</artifactId>
+					<version>5.2.11.Final</version>
+				</dependency>
+			</dependencies>
+		</plugin>
+	</plugins>
+</build>
 </project>

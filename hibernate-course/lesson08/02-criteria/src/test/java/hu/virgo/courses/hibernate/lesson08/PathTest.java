@@ -1,10 +1,10 @@
 package hu.virgo.courses.hibernate.lesson08;
 
 import eu.drus.jpa.unit.api.JpaUnit;
-import hu.virgo.courses.hibernate.lesson07.model.Department;
-import hu.virgo.courses.hibernate.lesson07.model.Department_;
-import hu.virgo.courses.hibernate.lesson07.model.Employee;
-import hu.virgo.courses.hibernate.lesson07.model.Employee_;
+import hu.virgo.courses.hibernate.lesson08.model.Department;
+import hu.virgo.courses.hibernate.lesson08.model.Department_;
+import hu.virgo.courses.hibernate.lesson08.model.Employee;
+import hu.virgo.courses.hibernate.lesson08.model.Employee_;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 

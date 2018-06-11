@@ -1,8 +1,8 @@
 package hu.virgo.courses.hibernate.lesson08;
 
 import eu.drus.jpa.unit.api.JpaUnit;
-import hu.virgo.courses.hibernate.lesson07.model.Product;
-import hu.virgo.courses.hibernate.lesson07.model.Product_;
+import hu.virgo.courses.hibernate.lesson08.model.Product;
+import hu.virgo.courses.hibernate.lesson08.model.Product_;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -18,7 +18,7 @@ public class Employee implements Serializable {
 	private Long id;
 
 	private String name;
-	private long salary;
+	private float salary;
 
 	@ManyToMany
 	private List<Project> projects;
@@ -42,11 +42,11 @@ public class Employee implements Serializable {
 		this.name = name;
 	}
 
-	public long getSalary() {
+	public float getSalary() {
 		return salary;
 	}
 
-	public void setSalary(long salary) {
+	public void setSalary(float salary) {
 		this.salary = salary;
 	}
 

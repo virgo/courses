@@ -1,11 +1,11 @@
 package hu.virgo.courses.hibernate.lesson08;
 
 import eu.drus.jpa.unit.api.JpaUnit;
-import hu.virgo.courses.hibernate.lesson07.model.Department_;
-import hu.virgo.courses.hibernate.lesson07.model.Employee;
-import hu.virgo.courses.hibernate.lesson07.model.Employee_;
-import hu.virgo.courses.hibernate.lesson07.model.Project;
-import hu.virgo.courses.hibernate.lesson07.model.Project_;
+import hu.virgo.courses.hibernate.lesson08.model.Department_;
+import hu.virgo.courses.hibernate.lesson08.model.Employee;
+import hu.virgo.courses.hibernate.lesson08.model.Employee_;
+import hu.virgo.courses.hibernate.lesson08.model.Project;
+import hu.virgo.courses.hibernate.lesson08.model.Project_;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -16,12 +16,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.ListJoin;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.SetJoin;
 import javax.persistence.criteria.Subquery;
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
