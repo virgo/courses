@@ -34,6 +34,27 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<inherited>true</inherited>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>${junit.platform.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<systemPropertyVariables>
+						<org.jboss.logging.provider>jdk</org.jboss.logging.provider>
+						<java.util.logging.config.file>
+							/work/source/virgo-courses/hibernate-course/lesson07/01-simplegraph/src/test/resources/logging.properties
+						</java.util.logging.config.file>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -90,31 +111,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19.1</version>
-				<inherited>true</inherited>
-				<dependencies>
-					<dependency>
-						<groupId>org.junit.platform</groupId>
-						<artifactId>junit-platform-surefire-provider</artifactId>
-						<version>${junit.platform.version}</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<systemPropertyVariables>
-						<org.jboss.logging.provider>jdk</org.jboss.logging.provider>
-						<java.util.logging.config.file>
-							/work/source/virgo-courses/hibernate-course/lesson07/01-simplegraph/src/test/resources/logging.properties
-						</java.util.logging.config.file>
-					</systemPropertyVariables>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 	<modules>
 		<module>01-graphapi</module>
 		<module>02-criteria</module>
