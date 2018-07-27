@@ -25,15 +25,15 @@ insert into ORDERS (id, orderNumber) values (5, 'TESZT-2');
 insert into OrderItem (id, quantity, order_id, product_id) values (10,2,5,1);
 insert into OrderItem (id, quantity, order_id, product_id) values (11,1,5,3);
 
-insert into Department(id, location) values (1, 'Budapest');
-insert into Department(id, location) values (2, 'Szeged');
-insert into Department(id, location) values (3, 'London');
-
-
 insert into Project (id, name) values (1, 'Kertépítés');
 insert into Project (id, name) values (2, 'Bevásárlás');
 insert into Project (id, name) values (3, 'Nagytakarítás');
 insert into Project (id, name) values (4, 'Lakásfelújítás');
+
+
+insert into Department(id, location) values (1, 'Budapest');
+insert into Department(id, location) values (2, 'Szeged');
+insert into Department(id, location) values (3, 'London');
 
 
 insert into Employee (id, name, salary, department_id) values (1, 'Mikkamakka', 1500, 1);

@@ -68,7 +68,7 @@ public class PathTest {
 	public void dynamicQuery() {
 		Map<String, Object> filters = new HashMap<>();
 //		filters.put("fLocation", "Szeged");
-		filters.put("fEmployeeName", "m");
+//		filters.put("fEmployeeName", "m");
 
 		List<Predicate> predicates = new ArrayList<>();
 

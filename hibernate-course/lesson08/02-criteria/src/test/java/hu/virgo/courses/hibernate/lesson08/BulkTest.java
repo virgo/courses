@@ -21,6 +21,8 @@ public class BulkTest {
 
 	@Test
 	public void bulkUpdate() {
+		em.createQuery("update Employee e set e.salary = 1500 where e.salary <= 1000").executeUpdate();
+
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 
 		CriteriaUpdate<Employee> update = cb.createCriteriaUpdate(Employee.class);
@@ -49,6 +51,15 @@ public class BulkTest {
 	}
 
 	@Test
+	public void attach() {
+		Employee e = new Employee();
+		e.setName("Valaki");
+		e.setSalary(10000F);
+		em.persist(e);
+
+		System.out.println("valami");
+	}
+	@Test
 	public void bulkWithParameter() {
 		Employee emp0 = em.find(Employee.class, 3L);
 		CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -63,7 +74,7 @@ public class BulkTest {
 		update.where(cb.lessThanOrEqualTo(e.get(Employee_.salary), p));
 
 		em.createQuery(update)
-				.setParameter(p, 1000f)
+				.setParameter(p, 1000F)
 				.executeUpdate();
 		em.flush();
 		em.clear();

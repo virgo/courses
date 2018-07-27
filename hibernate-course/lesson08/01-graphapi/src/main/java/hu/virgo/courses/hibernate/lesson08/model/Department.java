@@ -1,5 +1,8 @@
 package hu.virgo.courses.hibernate.lesson08.model;
 
+import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.SQLDelete;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@SQLDelete(sql = "se")
 public class Department implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,6 +23,7 @@ public class Department implements Serializable {
 	private String location;
 
 	@OneToMany(mappedBy = "department")
+	@Immutable
 	private List<Employee> employees;
 
 

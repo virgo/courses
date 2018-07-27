@@ -4,9 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.io.Serializable;
 
 @Entity
+@NamedQueries({
+		@NamedQuery(name = "findByLocation", query = "select d from Department d where d.location = :location"),
+		@NamedQuery(name ="findByEmployeeName", query = "select d from Department d join Employee e where e.name = :employeeName"),
+		@NamedQuery(name ="findByEmployeeNameAndLocation", query = "select d from Department d join Employee e where e.name = :employeeName and d.location = :location")
+})
 public class Department implements Serializable {
 
 	private static final long serialVersionUID = 1L;

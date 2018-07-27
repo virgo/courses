@@ -15,7 +15,7 @@ public class BookManager implements Serializable {
 	private EntityManager em;
 
 	public Book getBook(long id) {
-		return em.find(Book.class,id);
+		return em.find(Book.class, id);
 	}
 
 	public Book addBook(Book b) {

@@ -34,41 +34,62 @@ public class JoinTest {
 	public void joinTest() {
 		Map<String, Object> filters = new HashMap<>();
 //		filters.put("fName", "zga");
-//		filters.put("fProjectName", "tás");
+		filters.put("fProjectName", "tás");
+		filters.put("fLocation", "Szeged");
+
+/*
+Hibernate: select distinct employee0_.id as id1_1_, employee0_.department_id as departme4_1_,
+	employee0_.name as name2_1_, employee0_.salary as salary3_1_
+		from Employee employee0_
+			left outer join Employee_Project projects1_ on employee0_.id=projects1_.employees_id
+			left outer join Project project2_ on projects1_.projects_id=project2_.id
+		where (employee0_.name like ?)
+			and (project2_.name like ?)
 
 
+Hibernate: select distinct employee0_.id as id1_1_, employee0_.department_id as departme4_1_,
+	employee0_.name as name2_1_, employee0_.salary as salary3_1_
+		from Employee employee0_
+			left outer join Employee_Project projects1_ on employee0_.id=projects1_.employees_id
+			left outer join Project project2_ on projects1_.projects_id=project2_.id
+			cross join Department department3_
+		where employee0_.department_id=department3_.id
+			and (employee0_.name like ?)
+			and department3_.location=?
+			and (project2_.name like ?)
+ */
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Employee> c = cb.createQuery(Employee.class);
 		Root<Employee> emp = c.from(Employee.class);
 
 		c.select(emp);
 		c.distinct(true);
-		Join<Employee, Project> project = emp.join(Employee_.projects, JoinType.LEFT);
 
-		List<Predicate> criteria = new ArrayList<>();
+		List<Predicate> predicates = new ArrayList<>();
 		{
 			Object filter;
 			if ((filter = filters.get("fName")) != null) {
-				criteria.add(cb.like(emp.get(Employee_.name), "%" + filter + "%"));
+				predicates.add(cb.like(emp.get(Employee_.name), "%" + filter + "%"));
 			}
 		}
 		{
 			Object filter;
 			if ((filter = filters.get("fLocation")) != null) {
-				criteria.add(cb.equal(emp.get(Employee_.department).get(Department_.location), filter));
+				predicates.add(cb.equal(emp.get(Employee_.department).get(Department_.location), filter));
 			}
 		}
 		{
 			Object filter;
 			if ((filter = filters.get("fProjectName")) != null) {
-				criteria.add(cb.like(project.get(Project_.name), "%" + filter + "%"));
+				Join<Employee, Project> project = emp.join(Employee_.projects, JoinType.LEFT);
+				predicates.add(cb.like(project.get(Project_.name), "%" + filter + "%"));
 			}
 		}
 
-		if (criteria.size() == 1) {
-			c.where(criteria.get(0));
+		if (predicates.size() == 1) {
+			c.where(predicates.get(0));
 		} else {
-			c.where(cb.and(criteria.toArray(new Predicate[0])));
+			c.where(cb.and(predicates.toArray(new Predicate[0])));
 		}
 		List<Employee> employees = em.createQuery(c).getResultList();
 		System.out.println(employees);

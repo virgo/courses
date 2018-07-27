@@ -5,9 +5,7 @@
 			 version="2.1">
 	<persistence-unit name="course_test" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>hu.virgo.courses.hibernate.lesson08.model.Employee</class>
-		<class>hu.virgo.courses.hibernate.lesson08.model.Department</class>
-		<class>hu.virgo.courses.hibernate.lesson08.model.Project</class>
+		<class>hu.virgo.courses.hibernate.lesson09.model.Employee</class>
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<shared-cache-mode>NONE</shared-cache-mode>
@@ -19,7 +17,7 @@
 					  value="jdbc:h2:mem:serviceEnablerDB;DB_CLOSE_DELAY=-1"/>
 			<property name="javax.persistence.jdbc.user" value="test"/>
 			<property name="javax.persistence.jdbc.password" value="test"/>
-			<!--<property name="javax.persistence.sql-load-script-source" value="META-INF/data.sql"/>-->
+			<property name="javax.persistence.sql-load-script-source" value="META-INF/data.sql"/>
 		</properties>
 	</persistence-unit>
 

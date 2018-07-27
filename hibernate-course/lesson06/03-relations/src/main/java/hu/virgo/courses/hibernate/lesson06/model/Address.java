@@ -5,6 +5,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@SQLDelete(sql = "update Address set deleted = true where id = ?", check= ResultCheckStyle.COUNT)
-//@Where(clause = "deleted = false")
+@SQLDelete(sql = "update Address set deleted = true where id = ?", check= ResultCheckStyle.COUNT)
+@Where(clause = "deleted = false")
 //@Table(name = "Person")
 public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +28,7 @@ public class Address implements Serializable {
 
 	private String location;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Person> people;
 
 	private boolean deleted;
